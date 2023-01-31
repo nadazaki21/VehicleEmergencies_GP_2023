@@ -1,0 +1,22 @@
+﻿31/1/2023-Nada Zaki
+
+
+
+Trying to connect to my built image for raspberry pi using SSH
+
+
+* None of the provided images in the ‘ meta-raspberrypi ’ layer was suitable except the ‘rpi-test-image’ , as none of the others provided the ‘connmanctl’ (connection manager)  command that can establish a WiFi connection 
+* ( ssh can work on other images as they support ethernet connection, if the ethernet cable is connection to the local wifi that you have)
+
+
+
+
+* After establishing the connection successfully using the steps in this link https://emone.co.th/2022/09/12/how-to-configure-the-wifi-with-connmanctl/?v=fbe46383db39 , notice a mistake  in this link in the command used to turning the auto connection off, as the command correctly has the work ‘autoconnect’ without a ‘-’ in the middle like mentioned in this website 
+* This piece of info was check  through: https://manpages.ubuntu.com/manpages/focal/en/man1/connmanctl.1.html
+* To identify that a service has an auto connection, it will have *AR or *AO next to it when displaying the services with the ‘ services ‘ command 
+* If it has an *A only , it means that this service supports auto connection by it is not connected to right now 
+
+
+
+
+For more info on connman: https://embeddedcomputing.com/technology/security/network-security/the-connman
