@@ -4,6 +4,7 @@
 
 Trying to connect to my built image for raspberry pi using SSH
 
+*First, one must enale oppen-shh in their local.conf file 
 
 * None of the provided images in the ‘ meta-raspberrypi ’ layer was suitable except the ‘rpi-test-image’ , as none of the others provided the ‘connmanctl’ (connection manager)  command that can establish a WiFi connection 
 * ( ssh can work on other images as they support ethernet connection, if the ethernet cable is connection to the local wifi that you have)
