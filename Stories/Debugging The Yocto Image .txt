@@ -1,0 +1,96 @@
+﻿2/3/2023- Nada Zaki 
+
+
+
+
+Info about the serial console and how to connect the TTL, the different ways to access it and the commands to use:
+
+
+https://www.jeffgeerling.com/blog/2021/attaching-raspberry-pis-serial-console-uart-debugging
+
+
+https://tp4348.medium.com/serial-to-raspberry-pi-da635122b4d0
+
+
+ 
+To enable the serial port: 
+
+
+You enable it in the BSP layer of the target device, in my case I edited the machine configuration in the meta-raspberrypi layer that was pulled from github dunfell branch, 
+
+
+  
+
+
+
+I have modified the rpi-base.inc file, to have a baud rate of 115200 to the serial console, where ttyAMA0 is the raspberrypi’s serial console.
+
+
+  
+
+
+
+
+
+This was done by reference from bootlin material ( Yocto Slides)
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+Then rebuild your image…
+
+
+
+
+To use that serial console to debug:
+
+
+1. ‘Screen’ command 
+
+
+* Use the command ‘ sudo screen /dev/ttyUSB0 115200 ’ ( won’t work without sudo)
+
+
+  
+
+
+
+The following screenshot  shows the output of the screen command when connecting the the waveshare HDMI screen and the keyboard to the raspberry:
+  
+
+
+
+Instructions:
+* Ctrl+D      => to view the terminal of the target device 
+* Ctrl+a+d   => to close the screen app 
+* For the rest:  https://kb.iu.edu/d/acuy
+https://linuxize.com/post/how-to-use-linux-screen/
+
+
+
+
+2. Using CoolTerm app ( works by GUI)
+
+
+To download CoolTerm:   http://freeware.the-meiers.org/
+
+
+To enable the CoolTerm app: you must change the permission of the /dev/ttyUSB0 to 777 so that that app can have permissions to execute/read/write 
+
+
+
+
+* By configuring the setting at the bottom of the app, the port tp tyyUSB0 and the baudrate to 115200 and then connecting 
+
+
+To write command on CoolTerm: https://www.google.com/search?channel=fs&client=ubuntu&q=command+to+initate+coolterm+#fpstate=ive&vld=cid:20fcbe16,vid:S-3Py0IA-B8
