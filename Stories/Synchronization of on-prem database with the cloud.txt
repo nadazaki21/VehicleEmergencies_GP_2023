@@ -1,0 +1,98 @@
+﻿7/2/203 - Nada Zaki 
+
+
+
+
+
+
+Synchronization of on-prem database with the cloud 
+
+
+
+
+
+
+Storage gateway and DataSync Services did not seem to be the best solution, as they require hardware resources that do not match the resources of the Raspberry pi 4
+
+
+
+
+As an alternative, the aws s3 commands  for synchronization:
+
+
+aws s3 sync  /home/nadazaki/{folderName}/ s3://${BucketName}/${foldername}/
+
+
+Eg: aws s3 sync  /home/nadazaki/gsm/ s3://swgtest23/gsm/
+
+
+
+
+
+
+To enable the synchronization every while a cron job is activated
+
+
+For a detailed beginner tutorial on cron jobs:  https://snapshooter.com/learn/linux/cron
+                                                                        https://www.cyberciti.biz/faq/how-to-run-cron-job-every-minute-on-linuxunix 
+
+
+
+
+
+
+1 2 3 4 5 USERNAME /path/to/script.sh
+ Is the format i used to execute a bash ecript which synchronizes both S3 in AWS Cloud and my local file 
+
+
+Source : https://www.cyberciti.biz/faq/how-do-i-add-jobs-to-cron-under-linux-or-unix-oses/
+
+
+
+
+  
+
+
+
+
+
+Do forget to make the text file executable, if one one these commands on the bash script did not work, the other won’t.
+
+
+
+
+By using command  crontab -e we open the text file used to configure the cron job 
+
+
+  
+
+
+
+
+
+We add the 2 lines that make  cron jobs ( the second one was ust for the sake of testing)
+
+
+* * * * *  => means every minute 
+* Unfortunately, cron does not allow for it. You can not schedule a cron job to run every x second. Cron only supports a time interval of at least 60 seconds (i.e 1 minute).
+ 
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+Here it shows that the test.txt file for gsm folder has been added, and has also been synchronized with the cloud 
+
+
+
+
+How to add a bash script to a cron job: https://askubuntu.com/questions/925621/how-to-add-a-bash-script-to-a-cron-job
